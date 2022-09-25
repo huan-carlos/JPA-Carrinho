@@ -22,8 +22,8 @@ buttonAdd.forEach((button) => {
 })
 
 qtd.onchange = () => {
-    var newValue = qtd.value * preco.nextElementSibling.firstChild.nodeValue
-    subtotal.parentElement.replaceChild(createElementP(newValue), subtotal.nextElementSibling)
+    var newValue = qtd.value * preco.nextElementSibling.firstChild.nodeValue.replace("R$","")
+    subtotal.parentElement.replaceChild(createElementP("R$" + newValue), subtotal.nextElementSibling)
 }
 
 function createElementP(text) {
