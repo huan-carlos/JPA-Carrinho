@@ -16,8 +16,8 @@ buttonAdd.forEach((button) => {
         qtd.value = 1
         codigo.parentElement.replaceChild(createElementP(dados[0].firstChild.nodeValue), codigo.nextElementSibling)
         nome.parentElement.replaceChild(createElementP(dados[1].firstChild.nodeValue), nome.nextElementSibling)
-        preco.parentElement.replaceChild(createElementP(dados[2].firstChild.nodeValue), preco.nextElementSibling)
-        subtotal.parentElement.replaceChild(createElementP(dados[2].firstChild.nodeValue), subtotal.nextElementSibling)
+        preco.parentElement.replaceChild(createElementP("R$" + dados[2].lastChild.nodeValue), preco.nextElementSibling)
+        subtotal.parentElement.replaceChild(createElementP("R$" + dados[2].lastChild.nodeValue), subtotal.nextElementSibling)
     }
 })
 
