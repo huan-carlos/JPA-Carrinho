@@ -31,4 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
-.nvm
+.nvm/
+
+### Variáveis de Ambiente ###
+src\main\resources\application.properties
