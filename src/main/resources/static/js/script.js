@@ -1,29 +1,33 @@
-buttonAdd = document.getElementsByName("buttonAdd");
-nome = document.getElementById("nome");
-codigo = document.getElementById("cod");
-preco = document.getElementById("preco");
-subtotal = document.getElementById("subtotal");
-qtd = document.getElementById("qtd");
-reset = document.getElementById("reset");
+buttonAdd = document.getElementsByName("buttonAdd")
+nome = document.getElementById("nome")
+codigo = document.getElementById("cod")
+preco = document.getElementById("preco")
+subtotal = document.getElementById("subtotal")
+qtd = document.getElementById("qtd")
+closeButton = document.getElementById("closeButton")
+closeXButton = document.getElementById("closeXButton")
+confirmButton = document.getElementById("confirmButton")
 
 buttonAdd.forEach((button) => {
     button.onclick = () => {
-        dados = button.parentNode.parentNode.getElementsByTagName("td");
-        codigo.append(dados[0].firstChild.nodeValue);
-        nome.append(dados[1].firstChild.nodeValue);
-        preco.append(dados[2].firstChild.nodeValue);
-        subtotal.append(dados[2].firstChild.nodeValue);
+        dados = button.parentNode.parentNode.getElementsByTagName("td")
+
+        qtd.value = 1
+        codigo.parentElement.replaceChild(createElementP(dados[0].firstChild.nodeValue), codigo.nextElementSibling)
+        nome.parentElement.replaceChild(createElementP(dados[1].firstChild.nodeValue), nome.nextElementSibling)
+        preco.parentElement.replaceChild(createElementP(dados[2].firstChild.nodeValue), preco.nextElementSibling)
+        subtotal.parentElement.replaceChild(createElementP(dados[2].firstChild.nodeValue), subtotal.nextElementSibling)
     };
 });
 
 qtd.onchange = () => {
-    subtotal.lastChild.nodeValue = qtd.value * preco.lastChild.nodeValue;
+    var newValue = qtd.value * preco.nextElementSibling.firstChild.nodeValue
+    subtotal.parentElement.replaceChild(createElementP(newValue), subtotal.nextElementSibling)
 };
 
-reset.onclick = () => {
-    codigo.lastChild.remove();
-    nome.lastChild.remove();
-    preco.lastChild.remove();
-    subtotal.lastChild.remove();
-    qtd.value = 1;
-};
+function createElementP(text) {
+    p = document.createElement("p")
+    textAux = document.createTextNode(text)
+    p.appendChild(textAux)
+    return p
+}

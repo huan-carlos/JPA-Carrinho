@@ -74,21 +74,37 @@
                     <h5 class="modal-title" id="exampleModalLabel">
                         Quantidade a ser Adicionada
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="closeXButton"></button>
                 </div>
                 <div class="modal-body">
-                    <a id="cod"><b>Código: </b></a><br />
-                    <a id="nome"><b>Nome: </b></a><br />
-                    <a id="preco"><b>Preço: </b></a><br />
-                    <a><b><label>Quantidade: </label></b><input id="qtd" type="number" min="1" value="1"
-                            name="quantidade" /></a><br />
-                    <a id="subtotal"><b>Subtotal: </b></a>
+                    <a id="cod">
+                        <b>Código: </b>
+                    </a>
+                    <p name="valoresModal"></p>
+                    <a id="nome">
+                        <b>Nome: </b>
+                    </a>
+                    <p name="valoresModal"></p>
+                    <a id="preco">
+                        <b>Preço: </b>
+                    </a>
+                    <p name="valoresModal"></p>
+                    <a>
+                        <b>
+                            <label>Quantidade: </label>
+                        </b>
+                        <input id="qtd" type="number" min="1" value="1" name="quantidade" /></a><br /><br />
+                    <a id="subtotal">
+                        <b>Subtotal: </b>
+                    </a>
+                    <p name="valoresModal"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="reset">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeButton">
                         Close
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" class="btn btn-primary" id="confirmButton">
                         Save changes
                     </button>
                 </div>
