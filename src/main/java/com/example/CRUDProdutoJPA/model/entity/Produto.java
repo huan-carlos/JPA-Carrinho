@@ -40,4 +40,9 @@ public class Produto implements Serializable {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return "Produto [descricao=" + descricao + ", id=" + id + ", valor=" + valor + "]";
+    }
 }
