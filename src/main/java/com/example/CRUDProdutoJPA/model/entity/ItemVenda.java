@@ -54,4 +54,9 @@ public class ItemVenda implements Serializable {
     public double total() {
         return produto.getValor() * this.qtd;
     }
+
+    @Override
+    public String toString() {
+        return "ItemVenda [id=" + id + ", produto=" + produto + ", qtd=" + qtd + ", venda=" + venda + "]";
+    }
 }
