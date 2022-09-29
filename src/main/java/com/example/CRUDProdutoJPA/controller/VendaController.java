@@ -1,5 +1,9 @@
 package com.example.CRUDProdutoJPA.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,9 +64,18 @@ public class VendaController {
     }
 
     @PostMapping("/addcarrinho")
-    public ModelAndView addCarrinho(ItemVenda itemVenda){
+    public ModelAndView addCarrinho(ItemVenda itemVenda, HttpSession session){
         //adicionar o produto dentro da venda dentro da sessão
-        System.out.println(itemVenda.toString());
+        Venda carrinho = (Venda) session.getAttribute("carrinho");
+
+        carrinho.addItensVenda(itemVenda);
+        session.setAttribute("carrinho", carrinho);
+
         return new ModelAndView("redirect:/inicio/inicio");
+    }
+
+    @GetMapping("/carrinho")
+    public String carrinho() {
+        return "/vendas/carrinho";
     }
 }
