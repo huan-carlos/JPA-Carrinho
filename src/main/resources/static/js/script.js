@@ -14,15 +14,18 @@ buttonAdd.forEach((button) => {
         dados = button.parentNode.parentNode.getElementsByTagName("td")
 
         qtd.value = 1
-        codigo.parentElement.replaceChild(createElementP(dados[0].firstChild.nodeValue), codigo.nextElementSibling)
-        nome.parentElement.replaceChild(createElementP(dados[1].firstChild.nodeValue), nome.nextElementSibling)
-        preco.parentElement.replaceChild(createElementP("R$" + dados[2].lastChild.nodeValue), preco.nextElementSibling)
+        //codigo.parentElement.replaceChild(createElementP(dados[0].firstChild.nodeValue), codigo.nextElementSibling)
+        codigo.getElementsByTagName("input")[0].value = dados[0].firstChild.nodeValue
+        //nome.parentElement.replaceChild(createElementP(dados[1].firstChild.nodeValue), nome.nextElementSibling)
+        nome.getElementsByTagName("input")[0].value = dados[1].firstChild.nodeValue
+        //preco.parentElement.replaceChild(createElementP("R$" + dados[2].lastChild.nodeValue), preco.nextElementSibling)
+        preco.getElementsByTagName("input")[0].value = dados[2].lastChild.nodeValue
         subtotal.parentElement.replaceChild(createElementP("R$" + dados[2].lastChild.nodeValue), subtotal.nextElementSibling)
     }
 })
 
 qtd.onchange = () => {
-    var newValue = qtd.value * preco.nextElementSibling.firstChild.nodeValue.replace("R$","")
+    var newValue = qtd.value * preco.getElementsByTagName("input")[0].value
     subtotal.parentElement.replaceChild(createElementP("R$" + newValue), subtotal.nextElementSibling)
 }
 

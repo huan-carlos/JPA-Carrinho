@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <header class="d-flex justify-content-center py-3">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/produtos/list" class="nav-link">Lista de Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/venda/carrinho" class="nav-link active" aria-current="page">Carrinho</a>
+                    </li>
+                </ul>
+            </header>
+        </div>
+    </header>
+    <main class="">
+        <h2 class="d-flex justify-content-center">Carrinho de Compras</h2>
+        <div class="d-flex justify-content-center">
+            <table class="table table-striped table-hover w-auto">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">
+                            <img src="/img/bookmark-plus.svg" width="100%" />
+                        </th>
+                        <th scope="col">Códico</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Qtd.</th>
+                        <th scope="col">SubTotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p : ${produtos}">
+                        <th scope="row">-</th>
+                        <td th:text="${p.id}"></td>
+                        <td th:text="${p.descricao}"></td>
+                        <td class="valor" th:text="${p.valor}"></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" name="buttonAdd">
+                                Adicionar ao Carrinho
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script src="/js/script.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>

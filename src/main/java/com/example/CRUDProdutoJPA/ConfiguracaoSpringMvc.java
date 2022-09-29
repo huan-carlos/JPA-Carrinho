@@ -26,8 +26,8 @@ public class ConfiguracaoSpringMvc implements WebMvcConfigurer {
      */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("redirect:/produtos/list");
-        registry.addViewController("/home").setViewName("home");
+        registry.addViewController("/").setViewName("redirect:/inicio/inicio");
+        //registry.addViewController("/home").setViewName("home");
     }
 
 }

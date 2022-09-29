@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.CRUDProdutoJPA.model.entity.ItemVenda;
 import com.example.CRUDProdutoJPA.model.entity.Venda;
 import com.example.CRUDProdutoJPA.model.repository.VendaRepository;
 import org.springframework.context.annotation.Scope;
@@ -19,9 +20,6 @@ import org.springframework.context.annotation.Scope;
 @Controller
 @RequestMapping("vendas")
 public class VendaController {
-    
-    @Autowired
-    Venda venda;
 
     @Autowired
     VendaRepository repository;
@@ -61,4 +59,10 @@ public class VendaController {
         return new ModelAndView("redirect:/vendas/list");
     }
 
+    @PostMapping("/addcarrinho")
+    public ModelAndView addCarrinho(ItemVenda itemVenda){
+        //adicionar o produto dentro da venda dentro da sessão
+        System.out.println(itemVenda.toString());
+        return new ModelAndView("redirect:/inicio/inicio");
+    }
 }
