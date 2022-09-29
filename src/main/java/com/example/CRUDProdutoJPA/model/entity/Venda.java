@@ -54,4 +54,12 @@ public class Venda implements Serializable {
         return totalVenda;
     }
 
+    public List<ItemVenda> getItensVenda() {
+        return itensVenda;
+    }
+
+    public void addItensVenda(ItemVenda itenVenda) {
+        this.itensVenda.add(itenVenda);
+    }
+
 }
