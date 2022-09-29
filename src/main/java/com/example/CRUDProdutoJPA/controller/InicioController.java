@@ -1,5 +1,8 @@
 package com.example.CRUDProdutoJPA.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +27,14 @@ public class InicioController {
     ProdutoRepository repository;
 
     @GetMapping("/inicio")
-    public ModelAndView listar(ModelMap model) {
+    public ModelAndView listar(ModelMap model, HttpServletRequest request ,HttpServletResponse response) {
+        HttpSession session = request.getSession(true);
+        Venda carrinho = new Venda();
+
+        session.setAttribute("carrinho", carrinho);
+
         model.addAttribute("itemVenda", new ItemVenda());
-        model.addAttribute("carrinho", new Venda());
+        model.addAttribute("carrinho", carrinho);
         model.addAttribute("produtos", repository.buscarProdutos());
         return new ModelAndView("/home", model);
     }
