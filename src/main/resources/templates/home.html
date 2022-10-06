@@ -19,12 +19,17 @@
                         <a href="/" class="nav-link active" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                            <a href="/vendas/pedidos" class="nav-link">Pedidos</a>
+                        <a href="/vendas/pedidos" class="nav-link">Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/vendas/carrinho" class="nav-link"><spam th:text="'Carrinho ['+${session.venda.itensVenda.size()}+']'"></spam></a>
+                        <a href="/vendas/carrinho" class="nav-link">
+                            Carrinho
+                            <spam class="badge text-bg-secondary"
+                                th:text="${session.venda == null} ? '0' : ${session.venda.itensVenda.size()}">
+                            </spam>
+                        </a>
                     </li>
-                </ul>   
+                </ul>
             </header>
         </div>
     </header>
