@@ -1,8 +1,6 @@
 package com.example.CRUDProdutoJPA.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,7 +42,7 @@ public class VendaController {
     @PostMapping("/save")
     public ModelAndView save(Venda venda) {
         repository.save(venda);
-        return new ModelAndView("redirect:/vendas/list");
+        return new ModelAndView("redirect:/vendas/pedidos");
     }
 
     @GetMapping("/remove/{id}")
