@@ -51,6 +51,12 @@ public class VendaController {
         return new ModelAndView("redirect:/vendas/list");
     }
 
+    @GetMapping("/list/{id}")
+    public ModelAndView list(@PathVariable("id") int id, ModelMap model) {
+        model.addAttribute("vendadetalhes", repository.buscarVenda(id));
+        return new ModelAndView("/vendas/pedido");
+    }
+
     @GetMapping("/edit/{id}")
     public ModelAndView edit(@PathVariable("id") int id, ModelMap model) {
         model.addAttribute("venda", repository.buscarVenda(id));
