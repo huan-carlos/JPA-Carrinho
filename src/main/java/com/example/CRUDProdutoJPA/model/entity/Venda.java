@@ -1,6 +1,7 @@
 package com.example.CRUDProdutoJPA.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +31,10 @@ public class Venda implements Serializable {
     @OneToMany(mappedBy = "venda")
     List<ItemVenda> itensVenda;
 
+    public Venda() {
+        this.itensVenda = new ArrayList<>();
+    }
+
     public int getId() {
         return id;
     }
@@ -48,8 +53,8 @@ public class Venda implements Serializable {
 
     public double total() {
         double totalVenda = 0;
-        for (int i = 0; i < itensVenda.size(); i++) {
-            totalVenda += itensVenda.get(i).total();
+        for (ItemVenda i : itensVenda) {
+            totalVenda += i.total();
         }
         return totalVenda;
     }

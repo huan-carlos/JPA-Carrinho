@@ -19,12 +19,12 @@
                         <a href="/" class="nav-link active" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Pedidos</a>
+                            <a href="/vendas/pedidos" class="nav-link">Pedidos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/vendas/carrinho" class="nav-link">Carrinho</a>
+                        <a href="/vendas/carrinho" class="nav-link"><spam th:text="'Carrinho ['+${session.venda.itensVenda.size()}+']'"></spam></a>
                     </li>
-                </ul>
+                </ul>   
             </header>
         </div>
     </header>
@@ -44,7 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="p : ${session.produtos}">
+                    <tr th:each="p : ${produtos}">
                         <th scope="row">-</th>
                         <td th:text="${p.id}"></td>
                         <td th:text="${p.descricao}"></td>

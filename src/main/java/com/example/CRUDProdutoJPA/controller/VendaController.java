@@ -1,7 +1,6 @@
 package com.example.CRUDProdutoJPA.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +27,18 @@ public class VendaController {
     @Autowired
     VendaRepository repository;
 
+    @Autowired
+    Venda venda;
+
     @GetMapping("/form")
     public String form(Venda venda) {
         return "/vendas/form";
     }
 
-    @GetMapping("/list")
+    @GetMapping("/pedidos")
     public ModelAndView listar(ModelMap model) {
         model.addAttribute("vendas", repository.buscarVendas());
-        return new ModelAndView("/vendas/list", model);
+        return new ModelAndView("/vendas/pedidos", model);
     }
 
     @PostMapping("/save")
@@ -64,14 +66,11 @@ public class VendaController {
     }
 
     @PostMapping("/addcarrinho")
-    public ModelAndView addCarrinho(ItemVenda itemVenda, HttpSession session){
-        //adicionar o produto dentro da venda dentro da sessão
-        Venda carrinho = (Venda) session.getAttribute("carrinho");
+    public ModelAndView addCarrinho(ItemVenda itemVenda, HttpServletRequest request) {
 
-        carrinho.addItensVenda(itemVenda);
-        session.setAttribute("carrinho", carrinho);
-
-        return new ModelAndView("redirect:/inicio/inicio");
+        itemVenda.setVenda(venda);
+        venda.addItensVenda(itemVenda);
+        return new ModelAndView("redirect:/produtos/list");
     }
 
     @GetMapping("/carrinho")

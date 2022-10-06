@@ -1,5 +1,6 @@
-package com.example.CRUDProdutoJPA.controller;
+    package com.example.CRUDProdutoJPA.controller;
 
+import com.example.CRUDProdutoJPA.model.entity.ItemVenda;
 import com.example.CRUDProdutoJPA.model.entity.Produto;
 import com.example.CRUDProdutoJPA.model.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +27,11 @@ public class ProdutosController {
     }
 
     @GetMapping("/list")
-    public ModelAndView listar(ModelMap model) {
+    public ModelAndView listar(ItemVenda itemVenda, ModelMap model) {
         model.addAttribute("produtos", repository.buscarProdutos());
         return new ModelAndView("/home", model);
     }
-
+    
     @PostMapping("/save")
     public ModelAndView save(Produto produto) {
         repository.save(produto);

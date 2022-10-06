@@ -9,7 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Scope(value = "session")
+@Component
 @Entity
 @Table(name = "tb_itemVenda")
 public class ItemVenda implements Serializable {
@@ -27,6 +31,16 @@ public class ItemVenda implements Serializable {
     @JoinColumn(name = "id_venda")
     private Venda venda;
 
+    public Venda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
+
+    
+    
     public Produto getProduto() {
         return produto;
     }
