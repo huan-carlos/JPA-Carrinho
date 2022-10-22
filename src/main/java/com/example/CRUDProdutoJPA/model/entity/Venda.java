@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -29,7 +30,7 @@ public class Venda implements Serializable {
     @CreationTimestamp
     private Date data;
 
-    @OneToMany(mappedBy = "venda")
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.PERSIST)
     List<ItemVenda> itensVenda;
 
     public Venda() {
