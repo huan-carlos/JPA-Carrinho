@@ -70,8 +70,7 @@ public class VendaController {
     }
 
     @PostMapping("/addcarrinho")
-    public ModelAndView addCarrinho(ItemVenda itemVenda, HttpServletRequest request) {
-
+    public ModelAndView addCarrinho(ItemVenda itemVenda) {
         itemVenda.setVenda(venda);
         venda.addItensVenda(itemVenda);
         return new ModelAndView("redirect:/produtos/list");
