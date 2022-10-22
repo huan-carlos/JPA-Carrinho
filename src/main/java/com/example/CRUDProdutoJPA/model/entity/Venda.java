@@ -1,6 +1,7 @@
 package com.example.CRUDProdutoJPA.model.entity;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,8 +44,10 @@ public class Venda implements Serializable {
         this.id = id;
     }
 
-    public Date getData() {
-        return data;
+    public String getData() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YYY");
+        String auxData = sdf.format(data);
+        return auxData;
     }
 
     public void setData(Date data) {
