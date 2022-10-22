@@ -54,7 +54,7 @@
                         <td th:text="${c.produto.id}"></td>
                         <td th:text="${c.produto.descricao}"></td>
                         <td th:text="${c.qtd}"></td>
-                        <td class="valor" th:text="${c.total()}"></td>
+                        <td th:text="'R$ ' + ${c.total()}"></td>
                     </tr>
                 </tbody>
             </table>
