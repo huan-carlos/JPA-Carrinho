@@ -19,7 +19,7 @@
                         <a href="/" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/vendas/pedidos" class="nav-link active" aria-current="page">Pedidos</a>
+                        <a href="/vendas/pedidos" class="nav-link">Pedidos</a>
                     </li>
                     <li class="nav-item">
                         <a href="/vendas/carrinho" class="nav-link">
@@ -62,7 +62,7 @@
         <div class="d-flex justify-content-center">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Total do Carrinho</h5>
+                    <h5 class="card-title">Total do Pedido</h5>
                     <p>
                         <spam th:text="'R$ ' + ${vendadetalhes.total()}"></spam>
                     </p>
