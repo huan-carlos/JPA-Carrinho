@@ -1,6 +1,7 @@
 package com.example.CRUDProdutoJPA.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.CRUDProdutoJPA.model.entity.ItemVenda;
@@ -39,9 +41,12 @@ public class VendaController {
         return new ModelAndView("/vendas/pedidos", model);
     }
 
-    @PostMapping("/save")
-    public ModelAndView save(Venda venda) {
+    @GetMapping("/save")
+    public ModelAndView save(HttpSession httpsession, SessionStatus status) {
         repository.save(venda);
+        venda = new Venda();
+        status.setComplete();
+        httpsession.invalidate();
         return new ModelAndView("redirect:/vendas/pedidos");
     }
 
