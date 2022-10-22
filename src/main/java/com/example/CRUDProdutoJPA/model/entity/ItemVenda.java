@@ -39,8 +39,6 @@ public class ItemVenda implements Serializable {
         this.venda = venda;
     }
     
-    
-    
     public Produto getProduto() {
         return produto;
     }
