@@ -38,7 +38,7 @@ public class ItemVenda implements Serializable {
     public void setVenda(Venda venda) {
         this.venda = venda;
     }
-
+    
     
     
     public Produto getProduto() {
