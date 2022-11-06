@@ -14,7 +14,9 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.CRUDProdutoJPA.model.entity.ItemVenda;
+import com.example.CRUDProdutoJPA.model.entity.PessoaFisica;
 import com.example.CRUDProdutoJPA.model.entity.Venda;
+import com.example.CRUDProdutoJPA.model.repository.PessoaFisicaRepository;
 import com.example.CRUDProdutoJPA.model.repository.VendaRepository;
 import org.springframework.context.annotation.Scope;
 
@@ -26,6 +28,9 @@ public class VendaController {
 
     @Autowired
     VendaRepository repository;
+
+    @Autowired
+    PessoaFisicaRepository pf;
 
     @Autowired
     Venda venda;
@@ -89,7 +94,8 @@ public class VendaController {
     }
 
     @GetMapping("/carrinho")
-    public String carrinho() {
-        return "/vendas/carrinho";
+    public ModelAndView carrinho(ModelMap model, PessoaFisica pessoaFisica) {
+        model.addAttribute("clientes", pf.readAll());
+        return new ModelAndView("/vendas/carrinho", model);
     }
 }
