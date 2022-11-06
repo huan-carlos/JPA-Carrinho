@@ -41,6 +41,13 @@ public class VendaController {
         return new ModelAndView("/vendas/pedidos", model);
     }
 
+    @PostMapping("/addcliente")
+    public ModelAndView setCliente(PessoaFisica pessoaFisica){
+        venda.setPessoa(pessoaFisica);
+        pessoaFisica.addCompra(venda);
+        return new ModelAndView("redirect:/vendas/save");
+    }
+
     @GetMapping("/save")
     public ModelAndView save(HttpSession httpsession, SessionStatus status) {
         repository.save(venda);
