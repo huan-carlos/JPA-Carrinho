@@ -73,9 +73,8 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Total do Pedido</h5>
-                    <p>
-                        <spam th:text="'R$ ' + ${vendadetalhes.total()}"></spam>
-                    </p>
+                    <p><spam th:text="'R$ ' + ${vendadetalhes.total()}"></spam></p>
+                    <spam th:text="'Cliente: ' + ${vendadetalhes.pessoa.nome}"></spam>
                 </div>
             </div>
         </div>
