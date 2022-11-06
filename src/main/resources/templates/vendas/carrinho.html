@@ -80,7 +80,10 @@
             </div>
         </div>
         <div class="d-flex justify-content-center m-3">
-            <form th:action="@{/vendas/save}" method="GET">
+            <form th:action="@{/vendas/addcliente}" th:object="${pessoaFisica}" method="POST">
+                <select th:field="*{id}">
+                    <option th:each="c : ${clientes}" th:value="${c.id}" th:text="${c.nome}"></option>
+                </select>
                 <button type="submit" class="btn btn-dark">Finalizar Compra</button>
             </form>
         </div>
