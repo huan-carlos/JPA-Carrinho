@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,10 @@ public class Venda implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_pessoa")
+    private PessoaFisica pessoa;
 
     @CreationTimestamp
     private Date data;
@@ -71,4 +77,11 @@ public class Venda implements Serializable {
         this.itensVenda.add(itenVenda);
     }
 
+    public PessoaFisica getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(PessoaFisica pessoa) {
+        this.pessoa = pessoa;
+    }
 }
