@@ -1,6 +1,9 @@
 package com.example.CRUDProdutoJPA.controller;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.CRUDProdutoJPA.model.entity.PessoaFisica;
 import com.example.CRUDProdutoJPA.model.repository.PessoaFisicaRepository;
 
+@Scope(value = "request")
+@Transactional
 @Controller
 @RequestMapping("/fisica")
 public class PessoaFisicaController {
