@@ -1,6 +1,6 @@
 package com.example.CRUDProdutoJPA.controller;
 
-import javax.servlet.http.HttpSession;
+import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -91,6 +91,18 @@ public class VendaController {
         itemVenda.setVenda(venda);
         venda.addItensVenda(itemVenda);
         return new ModelAndView("redirect:/produtos/list");
+    }
+
+    @GetMapping("/removeritem/{id}")
+    public ModelAndView removerItem(@PathVariable("id") int idProduto) {
+        Iterator<ItemVenda> itt = this.venda.getItensVenda().iterator();
+
+        while (itt.hasNext()) {
+            if (itt.next().getProduto().getId() == idProduto) {
+                itt.remove();
+            }
+        }
+        return new ModelAndView("redirect:/vendas/carrinho");
     }
 
     @GetMapping("/carrinho")
