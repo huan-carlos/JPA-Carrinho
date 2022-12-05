@@ -27,16 +27,26 @@
                 </thead>
                 <tbody>
                     <tr th:each="p : ${produtos}">
-                        <th scope="row">-</th>
-                        <td th:text="${p.id}"></td>
-                        <td th:text="${p.descricao}"></td>
-                        <td th:text="${p.valor}"></td>
+                        <div th:if="${#authorization.expression('isAuthenticated()')}">
+                            <input type="hidden" th:value="*{id}" th:name="itemVenda.id" />
+                            <input type="hidden" th:value="${p.id}" th:name="produto.id" />
+
+                            <td class="align-middle">
+                                <input class="w-50 text-center" id="qtd" th:type="number" min="1" name="quantidade"
+                                    th:field="*{qtd}" required />
+                            </td>
                         <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" name="buttonAdd">
+                                <button type="submit" class="btn btn-primary" name="buttonAdd">
                                 Adicionar ao Carrinho
                             </button>
                         </td>
+                        </div>
+                        <div th:unless="${#authorization.expression('isAuthenticated()')}">
+                            <td colspan="2">
+                                <a href="/login">Faça Login</a>
+                            </td>
+                        </div>
+                    </form>
                     </tr>
                 </tbody>
             </table>
