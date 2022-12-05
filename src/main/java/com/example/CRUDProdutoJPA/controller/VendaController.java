@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.CRUDProdutoJPA.model.entity.ItemVenda;
@@ -51,18 +50,16 @@ public class VendaController {
     }
 
     @PostMapping("/addcliente")
-    public ModelAndView setCliente(PessoaFisica pessoaFisica){
+    public ModelAndView setCliente(PessoaFisica pessoaFisica) {
         venda.setPessoa(pessoaFisica);
         pessoaFisica.addCompra(venda);
         return new ModelAndView("redirect:/vendas/save");
     }
 
     @GetMapping("/save")
-    public ModelAndView save(HttpSession httpsession, SessionStatus status) {
+    public ModelAndView save() {
         repository.save(venda);
         venda = new Venda();
-        status.setComplete();
-        httpsession.invalidate();
         return new ModelAndView("redirect:/vendas/pedidos");
     }
 
