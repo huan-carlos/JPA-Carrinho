@@ -9,40 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
 </head>
-
-<body>
-    <header>
-        <div class="container">
-            <header class="d-flex justify-content-center py-3">
-                <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link active" aria-current="page">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/vendas/pedidos" class="nav-link">Pedidos</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Clientes
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/fisica/form">Cadastro</a></li>
-                            <li><a class="dropdown-item" href="/fisica/list">Listar</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/vendas/carrinho" class="nav-link">
-                            Carrinho
-                            <spam class="badge text-bg-secondary"
-                                th:text="${session.venda == null} ? '0' : ${session.venda.itensVenda.size()}">
-                            </spam>
-                        </a>
-                    </li>
-                </ul>
-            </header>
-        </div>
-    </header>
+<div th:insert="~{fragments/header :: modelheader}"></div>
     <main class="">
         <h2 class="d-flex justify-content-center">Lista de Produtos</h2>
         <div class="d-flex justify-content-center">
@@ -75,65 +42,4 @@
             </table>
         </div>
     </main>
-    <form th:action="@{/vendas/addcarrinho}" th:object="${itemVenda}" method="post">
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">
-                            Quantidade a ser Adicionada
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            id="closeXButton"></button>
-                    </div>
-                    <div class="modal-body">
-
-                        <a id="cod">
-                            <b>Código: </b><input type="number" th:field="*{produto.id}" readonly>
-                        </a>
-                        <p name="valoresModal"></p>
-
-                        <a id="nome">
-                            <b>Nome: </b><input type="text" th:field="*{produto.descricao}" readonly>
-                        </a>
-                        <p name="valoresModal"></p>
-
-                        <a id="preco">
-                            <b>Preço(R$): </b><input type="number" th:field="*{produto.valor}" readonly>
-                        </a>
-                        <p name="valoresModal"></p>
-
-                        <a>
-                            <b>
-                                <label>Quantidade: </label>
-                            </b>
-                            <input id="qtd" type="number" min="1" value="1" name="quantidade"
-                                th:field="*{qtd}" /></a><br /><br />
-
-                        <a id="subtotal">
-                            <b>Subtotal: </b>
-                        </a>
-                        <p name="valoresModal"></p>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeButton">
-                            Fechar
-                        </button>
-                        <button type="submit" class="btn btn-primary" id="confirmButton">
-                            Adicionar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</body>
-
-</html>
-
-<script src="/js/script.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-    crossorigin="anonymous"></script>
+<div th:insert="~{fragments/footer :: modelfooter}"></div>

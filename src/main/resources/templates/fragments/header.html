@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+    xmlns:th="http://www.thymeleaf.org" th:fragment="modelheader">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="mx-auto w-50">
+    <div class="container  py-3 mb-5">
+        <header class="d-flex justify-content-center">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link text-light" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Produtos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" sec:authorize="hasRole('ADMIN')"
+                                    href="/produtos/form">Cadastro</a></li>
+                            <li><a class="dropdown-item" href="/produtos/list">Listar</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Clientes
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/fisica/form">Cadastro</a></li>
+                            <li><a class="dropdown-item" href="/fisica/list">Listar</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/vendas/carrinho" class="nav-link text-light">
+                            Carrinho
+                            <spam class="badge badge-pill badge-light"
+                                th:text="${session.venda == null} ? '0' : ${session.venda.itensVenda.size()}">
+                            </spam>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <button sec:authorize="not isAuthenticated()" class="btn btn-success">
+                            <a class="text-light" href="/login">Entrar</a>
+                        </button>
+                        <form th:action="@{/logout}" method="POST">
+                            <button sec:authorize="isAuthenticated()" type="submit" class="btn btn-danger">Sair</button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
