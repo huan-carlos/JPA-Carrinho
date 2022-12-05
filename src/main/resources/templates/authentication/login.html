@@ -1,3 +1,34 @@
+<head>
+    <title>Login</title>
+</head>
 <div th:insert="~{fragments/header :: modelheader}"></div>
+    <main class="">
+        <div class="row">
+            <div class="mx-auto">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">Usuário/senha inválidos!</div>
+                </div>
+                <div class="card">
+                    <h5 class="card-header">Informe usuário e senha</h5>
+                    <div class="card-body">
+                        <form th:action="@{/login}" method="post">
+                            <div class="form-group">
+                                <label>Login:<input class="form-control" type="text"
+                                                    name="username" placeholder="Usuário"/></label>
+                            </div>
 
+                            <div class="form-group">
+                                <label>Senha:<input class="form-control"
+                                                    type="password" name="password" placeholder="Senha"/></label>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     <div th:insert="~{fragments/footer :: modelfooter}"></div>
