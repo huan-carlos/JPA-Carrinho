@@ -6,10 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 <div th:insert="~{fragments/header :: modelheader}"></div>
+<main class="">
+    <h2 class="d-flex justify-content-center">Cadastro de Produtos</h2>
+    <div class="d-flex justify-content-center">
         <form th:action="(${produto.id == null || produto.id == 0}) ? @{/produtos/save} : @{/produtos/update}" th:object="${produto}" method="post">
             <input type="hidden" th:field="*{id}">
-            <input type="text" th:field="*{descricao}"  placeholder="Descrição">
-            <input type="number" th:field="*{valor}"  placeholder="Valor">
-            <input type="submit" value="Enviar">
+            <input type="text" th:field="*{descricao}" placeholder="Descrição">
+            <input type="number" step=".01" th:field="*{valor}" placeholder="Valor">
+            <input type="submit" class="btn btn-dark" value="Enviar">
         </form>
+</main>
 <div th:insert="~{fragments/footer :: modelfooter}"></div>
