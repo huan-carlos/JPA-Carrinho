@@ -88,6 +88,14 @@ public class VendaController {
 
     @PostMapping("/addcarrinho")
     public ModelAndView addCarrinho(ItemVenda itemVenda) {
+
+        for (ItemVenda item : this.venda.getItensVenda()) {
+            if (item.equals(itemVenda)) {
+                item.setQtd(item.getQtd() + itemVenda.getQtd());
+                return new ModelAndView("redirect:/produtos/list");
+            }
+        }
+
         itemVenda.setVenda(venda);
         venda.addItensVenda(itemVenda);
         return new ModelAndView("redirect:/produtos/list");
