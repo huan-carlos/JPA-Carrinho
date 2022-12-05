@@ -17,6 +17,7 @@ import com.example.CRUDProdutoJPA.model.entity.ItemVenda;
 import com.example.CRUDProdutoJPA.model.entity.PessoaFisica;
 import com.example.CRUDProdutoJPA.model.entity.Venda;
 import com.example.CRUDProdutoJPA.model.repository.PessoaFisicaRepository;
+import com.example.CRUDProdutoJPA.model.repository.ProdutoRepository;
 import com.example.CRUDProdutoJPA.model.repository.VendaRepository;
 import org.springframework.context.annotation.Scope;
 
@@ -31,6 +32,9 @@ public class VendaController {
 
     @Autowired
     PessoaFisicaRepository pf;
+
+    @Autowired
+    ProdutoRepository pr;
 
     @Autowired
     Venda venda;
@@ -96,6 +100,7 @@ public class VendaController {
             }
         }
 
+        itemVenda.setProduto(pr.buscarProduto(itemVenda.getProduto().getId()));
         itemVenda.setVenda(venda);
         venda.addItensVenda(itemVenda);
         return new ModelAndView("redirect:/produtos/list");
