@@ -1,3 +1,5 @@
+[![build](https://github.com/huan-carlos/JPA-Carrinho/actions/workflows/maven.yml/badge.svg)](https://github.com/huan-carlos/JPA-Carrinho/actions/workflows/maven.yml)
+
 # JPA-Carrinho
 
 Sistema para gerir o carrinho dos cliente de uma e-commerce através da Sessão.
