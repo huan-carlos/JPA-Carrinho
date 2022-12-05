@@ -1,44 +1,36 @@
-<!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Lista de Pedidos</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous" />
 </head>
 <div th:insert="~{fragments/header :: modelheader}"></div>
-    <main class="">
-        <h2 class="d-flex justify-content-center">Lista de Pedidos</h2>
-        <div class="d-flex justify-content-center">
-            <table class="table table-striped table-hover w-auto">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">
-                            <img src="/img/bookmark-plus.svg" width="100%" />
-                        </th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Data</th>
-                        <th scope="col">Total</th>
-                        <th scope="col">Ação</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="v : ${vendas}">
-                        <th scope="row">-</th>
-                        <td th:text="${v.id}"></td>
-                        <td class="text" th:text="${v.getData()}"></td>
-                        <td th:text="'R$ ' + ${v.total()}"></td>
-                        <td>
-                            <form th:action="@{/vendas/list/{id}(id=${v.id})}">
-                                <button type="submit">Detalhes</button>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </main>
+<main class="">
+    <h2 class="d-flex justify-content-center">Lista de Pedidos</h2>
+    <div class="d-flex justify-content-center">
+        <table class="table table-striped table-hover w-auto">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">
+                        <img src="/img/bookmark-plus.svg" width="100%" />
+                    </th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="v : ${vendas}">
+                    <th scope="row">-</th>
+                    <td th:text="${v.id}"></td>
+                    <td class="text" th:text="${v.getData()}"></td>
+                    <td th:text="'R$ ' + ${v.total()}"></td>
+                    <td>
+                        <form th:action="@{/vendas/list/{id}(id=${v.id})}">
+                            <button type="submit">Detalhes</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
 <div th:insert="~{fragments/footer :: modelfooter}"></div>
