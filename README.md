@@ -2,9 +2,9 @@
 
 # JPA-Carrinho
 
-Sistema para gerir o carrinho dos cliente de uma e-commerce através da Sessão.
+Sistema para gerir o carrinho dos clientes de uma e-commerce através da Sessão.
 
-Esse sistema foi construido para atender a atividade da matéria Sistemas Para Internet no IFTO (Campus Palmas).
+Esse sistema foi construído para atender a atividade da matéria Sistemas Para Internet no IFTO (Campus Palmas).
 
 ## Stacks
 O projeto utiliza:

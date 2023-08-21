@@ -15,8 +15,10 @@
         <div class="d-flex justify-content-center">
             <form th:action="(${pessoaFisica.id == null || pessoaFisica.id == 0}) ? @{/fisica/save} : @{/fisica/update}" th:object="${pessoaFisica}" method="POST">
                 <input type="hidden" th:field="*{id}">
-            <input type="text" th:field="*{nome}" minlength="1" placeholder="Nome">
-            <input type="number" th:field="*{cpf}" placeholder="CPF">
+                <input type="text" th:field="*{nome}" minlength="1" placeholder="Nome">
+                <input type="number" th:field="*{cpf}" placeholder="CPF">
+                <input type="text" th:field="*{login}" placeholder="Login">
+                <input type="text" th:field="*{password}" placeholder="Senha">
                 <input type="submit" class="btn btn-dark" value="Enviar">
             </form>
         </div>

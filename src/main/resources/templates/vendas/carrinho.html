@@ -6,26 +6,29 @@
     <h2 class="d-flex justify-content-center">Carrinho de Compras</h2>
     <div class="d-flex justify-content-center">
         <table class="table table-striped w-auto text-center">
-            <thead class="table-dark">
+            <thead class="bg-secondary text-white-50">
                 <tr>
+                    <th scope="col">
+                        <img src="/img/bookmark-plus.svg" width="100%" />
+                    </th>
                     <th scope="col">Códico</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Qtd.</th>
                     <th scope="col">SubTotal</th>
-                    <th scope="col">
-                        <img src="/img/bookmark-plus.svg" width="75%" />
-                    </th>
+                    <th scope="col">Ação</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="c : ${session.venda.itensVenda}">
+                    <th class="align-middle" scope="row">-</th>
                     <td class="align-middle" th:text="${c.produto.id}"></td>
                     <td class="align-middle" th:text="${c.produto.descricao}"></td>
                     <td class="align-middle" th:text="${#numbers.formatInteger(c.qtd,1)}"></td>
                     <td class="align-middle" th:text="'R$ ' + ${#numbers.formatDecimal(c.total(),1,2)}"></td>
                     <td class="align-middle" scope="row">
                         <a th:href="'/vendas/removeritem/' + ${c.produto.id}"><img src="/img/trash.svg"
-                                width="75%" /></a>
+                                width="50%" />
+                        </a>
                     </td>
                 </tr>
             </tbody>

@@ -13,9 +13,8 @@ import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.
                 authorizeRequests()
@@ -37,22 +36,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll(); 
     }
 
-    @Autowired
-    public void configureUserDetails(AuthenticationManagerBuilder builder)
-            throws Exception {
-        builder
-                .inMemoryAuthentication()
-                .withUser("admin").password(new BCryptPasswordEncoder().encode("123")).roles("ADMIN"); //user
-    }
-
-     /**
-     * Com o método, instanciamos uma instância do encoder BCrypt e deixando o controle dessa instância como responsabilidade do Spring.
-     * Agora, sempre que o Spring Security necessitar disso, ele já terá o que precisa configurado.
-     * @return 
-     */
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
+//    @Autowired
+//    public void configureUserDetails(AuthenticationManagerBuilder builder)
+//            throws Exception {
+//        builder
+//                .inMemoryAuthentication()
+//                .withUser("admin").password(new BCryptPasswordEncoder().encode("123")).roles("ADMIN"); //user
+//    }
 }

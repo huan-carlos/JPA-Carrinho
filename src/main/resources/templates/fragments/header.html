@@ -9,31 +9,35 @@
     <link href="/webjars/bootstrap/4.4.1-1/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 
-<body class="mx-auto w-50">
-    <div class="container  py-3 mb-5">
+<body class="mx-auto bg-light">
+    <div class="container py-3">
         <header class="d-flex justify-content-center">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg bg-secondary">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
                         <a href="/" class="nav-link text-light" aria-current="page">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownProdutos" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Produtos
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" sec:authorize="hasRole('ADMIN')"
-                                    href="/produtos/form">Cadastro</a></li>
-                            <li><a class="dropdown-item" href="/produtos/list">Listar</a></li>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProdutos">
+                            <li>
+                                <a class="dropdown-item" sec:authorize="hasRole('ADMIN')"
+                                    href="/produtos/form">Cadastro</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/produtos/list">Listar</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
-                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdownClientes" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Clientes
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownClientes">
                             <li><a class="dropdown-item" href="/fisica/form">Cadastro</a></li>
                             <li><a class="dropdown-item" href="/fisica/list">Listar</a></li>
                         </ul>
@@ -46,7 +50,7 @@
                             </spam>
                         </a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
                         <button sec:authorize="not isAuthenticated()" class="btn btn-success">
                             <a class="text-light" href="/login">Entrar</a>
                         </button>
